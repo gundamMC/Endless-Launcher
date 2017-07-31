@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EndlessLauncher"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
-    <Grid>
-        
-    </Grid>
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Height="600" Width="1000" Loaded="Window_Loaded">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/DefaultBackground.png"/>
+    </Window.Background>
 </Window>

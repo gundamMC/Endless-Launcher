@@ -8,7 +8,11 @@ using System.ComponentModel;
 namespace EndlessLauncher
 {
 
-     
+    /*
+     * Please move this to the "download" form when that is done
+     * This allows the DownloadProgressChanged event to directly 
+     * modifies the progress bar.
+     */
 
 
     class Internet
