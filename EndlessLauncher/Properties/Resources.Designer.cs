@@ -93,6 +93,16 @@ namespace EndlessLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DefaultHead {
+            get {
+                object obj = ResourceManager.GetObject("DefaultHead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HeaderBar {
             get {
                 object obj = ResourceManager.GetObject("HeaderBar", resourceCulture);

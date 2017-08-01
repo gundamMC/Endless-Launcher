@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EndlessLauncher
 {
-    public class RegistryConfig
+    public class ConfigClass
     {
         #region PlayerOptions
         public string Username { get; set; }

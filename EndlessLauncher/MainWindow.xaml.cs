@@ -26,14 +26,14 @@ namespace EndlessLauncher
         {
             InitializeComponent();
         }
-        public static RegistryConfig Config;
+        public static ConfigClass Config;
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (File.Exists("EnlessConfig.json"))
             {
-                Config = JsonMapper.ToObject<RegistryConfig>(System.IO.File.ReadAllText("EnlessConfig.json"));
+                Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
             }
             else { }
              

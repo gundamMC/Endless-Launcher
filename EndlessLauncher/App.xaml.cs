@@ -18,7 +18,7 @@ namespace EndlessLauncher
     public partial class App : Application
     {
         //Sets global config
-        public static RegistryConfig Config;
+        public static ConfigClass Config;
 
 
         // Initializes launcher core

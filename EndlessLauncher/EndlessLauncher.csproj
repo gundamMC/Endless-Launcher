@@ -68,7 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RegistryConfig.cs" />
+    <Compile Include="ConfigClass.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Minimum_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DefaultHead.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -127,6 +127,9 @@
   <data name="DefaultBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DefaultBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DefaultHead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\defaulthead.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="HeaderBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HeaderBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
