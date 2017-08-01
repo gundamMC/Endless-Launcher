@@ -38,5 +38,10 @@ namespace EndlessLauncher
             else { }
              
         }
+
+        private void HeaderBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

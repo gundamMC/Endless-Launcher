@@ -108,5 +108,20 @@
   <ItemGroup>
     <Resource Include="Resources\DefaultBackground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HeaderBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Minimum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Close_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Minimum_Hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
