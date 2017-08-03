@@ -126,5 +126,14 @@
   <ItemGroup>
     <Resource Include="Resources\DefaultHead.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StartGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StartGame_Pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StartGame_Hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
