@@ -43,5 +43,18 @@ namespace EndlessLauncher
         {
             this.DragMove();
         }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            CloseButton.Background = new ImageBrush(new BitmapImage(new Uri(@"Resources/Close_pressed.png")));
+            CloseMessageBox Form = new CloseMessageBox();
+            Form.Show();
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
     }
 }

@@ -33,7 +33,6 @@
                                     so we don't need to add a new property.
                                     (BorderBrush isn't used as there is no border)-->
                                 </Setter>
-
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -52,19 +51,19 @@
                MouseDown="HeaderBar_MouseDown"
                RenderOptions.BitmapScalingMode="NearestNeighbor"/>
 
-        <Button x:Name="Minimum"
+        <Button x:Name="Minimize"
                 Content=""
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Margin="0,0,50,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="Minimize_Click">
             <Button.BorderBrush>
-                <ImageBrush ImageSource="Resources/Minimum_Hover.png"/>
+                <ImageBrush ImageSource="Resources/Minimize_Hover.png"/>
             </Button.BorderBrush>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Minimum.png"/>
+                <ImageBrush ImageSource="Resources/Minimize.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="CloseButton"
@@ -74,7 +73,7 @@
                 Margin="0,0,0,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="CloseButton_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/Close_Hover.png"/>
             </Button.BorderBrush>
