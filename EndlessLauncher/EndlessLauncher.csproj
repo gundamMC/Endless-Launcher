@@ -187,5 +187,38 @@
   <ItemGroup>
     <Resource Include="Resources\ButtonW_Hover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_LauncherSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_GameSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_ModManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_ResourceAndShaderPacks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_StartGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_Support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_VersionManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_APIDownload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_Download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon_MapManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MagnetBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

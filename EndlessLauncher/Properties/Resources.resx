@@ -166,6 +166,39 @@
   <data name="HeaderBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HeaderBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_APIDownload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_APIDownload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_GameSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_GameSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_LauncherSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_LauncherSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_MapManager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_MapManager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_ModManager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_ModManager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_ResourceAndShaderPacks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_ResourceAndShaderPacks.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_StartGame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_StartGame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Support" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Support.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_VersionManager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_VersionManager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MagnetBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MagnetBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
