@@ -89,7 +89,7 @@
         <Label Content="UUID: XXXX-XXXX-XXXX-XXXX" HorizontalAlignment="Left" Margin="140,131,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light" FontSize="8"/>
         <Label Content="Selected version" HorizontalAlignment="Right" Margin="0,47,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0" FontWeight="Bold" HorizontalContentAlignment="Right"/>
         <Label Content="1.12 - Forge" HorizontalAlignment="Right" Margin="0,71,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" HorizontalContentAlignment="Right"/>
-        <Button x:Name="StartGame"
+        <Button x:Name="HeaderStartGame"
             Content="Start Game"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
@@ -104,19 +104,19 @@
                 <ImageBrush ImageSource="Resources/StartGame.png"/>
             </Button.Background>
         </Button>
-        <WrapPanel x:Name="LeftGird" HorizontalAlignment="Left" Height="300" Margin="150,215,0,0" VerticalAlignment="Top" Width="260" Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_GameSettings.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_LauncherSettings.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ResourceAndShaderPacks.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_APIDownload.png" Stretch="None"/>
+        <WrapPanel x:Name="LeftGird" HorizontalAlignment="Left" Height="300" Margin="150,215,0,0" VerticalAlignment="Top" Width="260" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <Image x:Name="GameSettings" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_GameSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="LauncherSettings" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_LauncherSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="ResourceAndShaderPacks" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ResourceAndShaderPacks.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="APIDownload" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_APIDownload.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
         </WrapPanel>
         <WrapPanel x:Name="RightGrid" HorizontalAlignment="Left" Height="300" Margin="450,215,0,0" VerticalAlignment="Top" Width="410">
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ModManager.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_VersionManager.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_MapManager.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Support.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Download.png" Stretch="None"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_StartGame.png" Stretch="None"/>
+            <Image x:Name="ModManager" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ModManager.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="VersionManager" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_VersionManager.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="MapManager" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_MapManager.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="Support" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Support.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="Download" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Download.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="StartGame" HorizontalAlignment="Left" Height="40" Margin="45,55" VerticalAlignment="Top" Width="40" Source="Resources/Icon_StartGame.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
         </WrapPanel>
     </Grid>
 </Window>
