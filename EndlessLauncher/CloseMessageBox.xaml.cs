@@ -39,7 +39,7 @@ namespace EndlessLauncher
             this.Close();
             //Sets the texture back
             MainWindow Form = Application.Current.Windows[0] as MainWindow;
-            Form.CloseButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
+            Form.CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)

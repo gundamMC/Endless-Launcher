@@ -60,6 +60,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddIconPoints.cs" />
+    <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
     <Compile Include="CloseMessageBox.xaml.cs">
       <DependentUpon>CloseMessageBox.xaml</DependentUpon>
@@ -227,5 +229,6 @@
   <ItemGroup>
     <Resource Include="Resources\MagnetBackground_Pressed.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
