@@ -60,12 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddIconPoints.cs" />
+    <Compile Include="IconPointClass.cs" />
     <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
     <Compile Include="CloseMessageBox.xaml.cs">
       <DependentUpon>CloseMessageBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PointDistance.cs" />
     <Compile Include="Tools\GetRootPath.cs" />
     <Compile Include="Internet.cs" />
     <Compile Include="Tools\GetJavaPath.cs" />

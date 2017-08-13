@@ -33,7 +33,7 @@ namespace EndlessLauncher
 
         public List<BackgroundButtonClass> Backgrounds = new List<BackgroundButtonClass>();
 
-        public List<Point> IconPoints = new List<Point>();
+        //public List<Point> IconPoints = new List<Point>();
 
         private void LoadMagnetBackgrounds(Image i)
         {
@@ -83,8 +83,6 @@ namespace EndlessLauncher
                 Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
             }
             else { }
-
-            
 
             foreach (Image i in ButtonsGrid.Children)
             {
@@ -154,15 +152,16 @@ namespace EndlessLauncher
 
         private void Icon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (DraggedObject == null)
+            {
+                return;
+            }
+
             IsDragging = false;
 
-            Boolean Added = false;
 
-            if (Added == false)
-            {
-                DraggedObject.Margin = OriginalPos;
-                DraggedBackground.Margin =  new Thickness(OriginalPos.Left - 55, OriginalPos.Top - 55, 0 ,0);
-            }
+            DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground);
+
 
             DraggedObject = null;
 
