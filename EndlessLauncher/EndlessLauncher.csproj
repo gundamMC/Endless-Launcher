@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IconLabelContents.cs" />
     <Compile Include="IconPointClass.cs" />
     <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />

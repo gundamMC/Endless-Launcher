@@ -90,6 +90,7 @@ namespace EndlessLauncher
             //LAUNCH
 
             if (!result.Success)
+                //Language support
             {
                 switch (result.ErrorType)
                 {

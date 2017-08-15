@@ -37,9 +37,11 @@ namespace EndlessLauncher
 
         private void LoadMagnetBackgrounds(Image i)
         {
-            Button ButtonBackground = new Button()
+            #region initialize Controls
+            
+            Button IconBackground = new Button()
             {
-                Name = i.Name + "Button",
+                Name = i.Name + "Background",
                 Height = 150,
                 Width = 150,
                 BorderThickness = new Thickness(0),
@@ -51,23 +53,58 @@ namespace EndlessLauncher
                 BorderBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png")))
             };
 
-            ButtonBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
-            ButtonBackground.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
-            ButtonBackground.PreviewMouseMove += Icon_MouseMove;
+            IconBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
+            IconBackground.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
+            IconBackground.PreviewMouseMove += Icon_MouseMove;
 
-            this.RegisterName(i.Name + "Button", ButtonBackground);
+            this.RegisterName(i.Name + "Background", IconBackground);
 
-            Panel.SetZIndex(ButtonBackground, -1);
+            Panel.SetZIndex(IconBackground, -1);
+
+
+            string LabelName = "";
+            foreach (IconLabelContents.LabelContentClass ii in IconLabelContents.LabelContents)
+            {
+                if (i.Name == ii.IconName)
+                {
+                    LabelName = ii.LabelText;
+                }
+            }
+
+            Label IconLabel = new Label()
+            {
+                Name = i.Name + "Label",
+                BorderThickness = new Thickness(0),
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top,
+                Content = LabelName,
+                FontSize = 12,
+                FontFamily = new FontFamily("Microsoft Yahei UI"),
+                FontWeight = FontWeights.Light,
+                Foreground = new SolidColorBrush(Colors.White),
+                HorizontalContentAlignment = HorizontalAlignment.Left
+            };
+
+            IconLabel.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
+            IconLabel.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
+            IconLabel.PreviewMouseMove += Icon_MouseMove;
+
+            this.RegisterName(i.Name + "Label", IconLabel);
+
+            #endregion
+
 
             //Calculates the X and Y cords based on the icons
             Point relativePoint = i.TransformToAncestor(this).Transform(new Point(0, 0));
-            ButtonBackground.Margin = new Thickness(relativePoint.X - 55, relativePoint.Y - 55, 0, 0);
+            IconBackground.Margin = new Thickness(relativePoint.X - 55, relativePoint.Y - 55, 0, 0);
+            IconLabel.Margin = new Thickness(relativePoint.X - 35, relativePoint.Y + 50, 0, 0);
 
-            MainGrid.Children.Add(ButtonBackground);
+            MainGrid.Children.Add(IconBackground);
+            MainGrid.Children.Add(IconLabel);
 
             Backgrounds.Add(new BackgroundButtonClass()
             {
-                BackgroundButton = ButtonBackground,
+                BackgroundButton = IconBackground,
                 Icon = i,
                 Size = 1
             });
@@ -76,7 +113,6 @@ namespace EndlessLauncher
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
 
             if (File.Exists("EnlessConfig.json"))
             {
@@ -112,20 +148,21 @@ namespace EndlessLauncher
         private void Icon_MouseEnter(object sender, MouseEventArgs e)
         {
             string imagename = (sender as Image).Name;
-            var targetbutton = (Button)this.FindName(imagename + "Button");
+            var targetbutton = (Button)this.FindName(imagename + "Background");
             targetbutton.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png")));
         }
 
         private void Icon_MouseLeave(object sender, MouseEventArgs e)
         {
             string imagename = (sender as Image).Name;
-            var targetbutton = (Button)this.FindName(imagename + "Button");
+            var targetbutton = (Button)this.FindName(imagename + "Background");
             targetbutton.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png")));
         }
 
         private Boolean IsDragging = false;
         private Image DraggedObject;
         private Button DraggedBackground;
+        private Label DraggedLabel;
         private Thickness OriginalPos;
 
 
@@ -133,16 +170,35 @@ namespace EndlessLauncher
         {
             IsDragging = true;
 
+            
+
             if (sender is Button)
             {
-                DraggedBackground = sender as Button;
                 string Sendername = ((Button)sender).Name;
-                DraggedObject = (Image)this.FindName(Sendername.Replace("Button", ""));
+                DraggedObject = (Image)this.FindName(Sendername.Replace("Background", ""));
+
+                DraggedBackground = sender as Button;
+
+                DraggedLabel = (Label)this.FindName(Sendername.Replace("Background", "Label"));
+
             }
-            else
+            if (sender is Label)
+            {
+                
+                string Sendername = ((Label)sender).Name;
+                DraggedObject = (Image)this.FindName(Sendername.Replace("Label", ""));
+
+                DraggedBackground = (Button)this.FindName(Sendername.Replace("Label", "Background"));
+
+                DraggedLabel = sender as Label;
+            }
+            if (sender is Image)
             {
                 DraggedObject = sender as Image;
-                DraggedBackground = (Button)this.FindName(DraggedObject.Name + "Button");
+
+                DraggedBackground = (Button)this.FindName(DraggedObject.Name + "Background");
+
+                DraggedLabel = (Label)this.FindName(DraggedObject.Name + "Label");
             }
 
             OriginalPos = DraggedObject.Margin;
@@ -160,8 +216,7 @@ namespace EndlessLauncher
             IsDragging = false;
 
 
-            DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground);
-
+            DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground, DraggedLabel);
 
             DraggedObject = null;
 
@@ -177,7 +232,7 @@ namespace EndlessLauncher
 
                 DraggedObject.Margin = new Thickness(e.GetPosition(this).X - 20, e.GetPosition(this).Y - 20, 0, 0);
                 DraggedBackground.Margin = new Thickness(e.GetPosition(this).X - 75, e.GetPosition(this).Y - 75, 0, 0);
-
+                DraggedLabel.Margin = new Thickness(e.GetPosition(this).X - 55, e.GetPosition(this).Y + 30, 0, 0);
             }
 
         }
@@ -187,7 +242,7 @@ namespace EndlessLauncher
             //Launch.LaunchGame("", 25565, Config.Version, "EN");
         }
 
-        private void UpdateIconBackgrounds()
+        private void UpdateIcons()
         {
             foreach (BackgroundButtonClass i in Backgrounds)
             {

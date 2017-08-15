@@ -115,9 +115,9 @@
             <Image x:Name="VersionManager" HorizontalAlignment="Left" Height="40" Margin="635,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_VersionManager.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="MapManager" HorizontalAlignment="Left" Height="40" Margin="765,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_MapManager.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="Support" HorizontalAlignment="Left" Height="40" Margin="505,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Support.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
-            <Image x:Name="Download" HorizontalAlignment="Left" Height="40" Margin="635,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Download.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
+            <Image x:Name="Downloads" HorizontalAlignment="Left" Height="40" Margin="635,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_Download.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="StartGame" HorizontalAlignment="Left" Height="40" Margin="765,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_StartGame.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
-        </Grid>
 
+        </Grid>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@ namespace EndlessLauncher
 {
     class PointDistance
     {
-        public static Thickness GetClosestPoint(Thickness Origin, List<Point> PointsList, Thickness GoBack, Button Background)
+        public static Thickness GetClosestPoint(Thickness Origin, List<Point> PointsList, Thickness GoBack, Button Background, Label IconLabel)
         {
             Point CloesestPoint = PointsList.OrderBy(x => Math.Pow(x.X - Origin.Left, 2) + Math.Pow(x.Y - Origin.Top, 2)).ToList().First();
             //Square root removed to save performance
@@ -18,6 +18,7 @@ namespace EndlessLauncher
                 
             {
                 Background.Margin = new Thickness(CloesestPoint.X - 55, CloesestPoint.Y - 55, 0, 0);
+                IconLabel.Margin = new Thickness(CloesestPoint.X - 35, CloesestPoint.Y + 50, 0, 0);
                 return new Thickness(CloesestPoint.X, CloesestPoint.Y, 0, 0);
             }
 
@@ -25,6 +26,7 @@ namespace EndlessLauncher
             else
             {
                 Background.Margin = new Thickness(GoBack.Left - 55, GoBack.Top - 55, 0, 0);
+                IconLabel.Margin = new Thickness(GoBack.Left - 35, GoBack.Top + 50, 0, 0);
                 return GoBack;
             }
 
