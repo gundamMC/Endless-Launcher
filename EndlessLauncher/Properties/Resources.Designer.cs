@@ -63,6 +63,16 @@ namespace EndlessLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BackgroundBlock {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundBlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Button {
             get {
                 object obj = ResourceManager.GetObject("Button", resourceCulture);
@@ -213,9 +223,29 @@ namespace EndlessLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Endless_LOGO {
+            get {
+                object obj = ResourceManager.GetObject("Endless_LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HeaderBar {
             get {
                 object obj = ResourceManager.GetObject("HeaderBar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeaderBar_Light {
+            get {
+                object obj = ResourceManager.GetObject("HeaderBar_Light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

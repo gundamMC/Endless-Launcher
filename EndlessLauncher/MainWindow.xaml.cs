@@ -118,7 +118,11 @@ namespace EndlessLauncher
             {
                 Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
             }
-            else { }
+            else {
+                InitializeWindow window = new InitializeWindow();
+                window.Show();
+                this.Hide();
+            }
 
             foreach (Image i in ButtonsGrid.Children)
             {

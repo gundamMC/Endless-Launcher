@@ -60,12 +60,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetMojangLauncherInfo.cs" />
     <Compile Include="IconLabelContents.cs" />
     <Compile Include="IconPointClass.cs" />
     <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
     <Compile Include="CloseMessageBox.xaml.cs">
       <DependentUpon>CloseMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InitializeWindow.xaml.cs">
+      <DependentUpon>InitializeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PointDistance.cs" />
     <Compile Include="Tools\GetRootPath.cs" />
@@ -78,6 +82,10 @@
     </Compile>
     <Compile Include="ConfigClass.cs" />
     <Page Include="CloseMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InitializeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +239,14 @@
   <ItemGroup>
     <Resource Include="Resources\MagnetBackground_Pressed.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\BackgroundBlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Endless LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HeaderBar_Light.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

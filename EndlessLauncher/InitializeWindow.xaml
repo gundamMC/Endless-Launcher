@@ -1,0 +1,104 @@
+﻿<Window x:Class="EndlessLauncher.InitializeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Height="600" Width="1000" Title="Endless Launcher">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/DefaultBackground.png"/>
+    </Window.Background>
+    <Window.Resources>
+        <!-- Custom Button, used to add hover images -->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                        BorderThickness="0" 
+                        Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border"
+                                        Value="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}}">
+
+                                    <!-- Uses BorderBrush as the hover image
+                                    so we don't need to add a new property.
+                                    (BorderBrush isn't used as there is no border)-->
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Image x:Name="HeaderBar"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Height="54"
+               Width="914"
+               Source="Resources/HeaderBar_Light.png"
+               RenderOptions.BitmapScalingMode="NearestNeighbor" MouseLeftButtonDown="HeaderBar_MouseDown"/>
+
+        <Button x:Name="Minimize"
+                Content=""
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,0,50,0"
+                Height="40"
+                Width="50"
+                BorderThickness="0" SnapsToDevicePixels="True">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/Minimize_Hover.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Minimize.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="CloseB"
+                x:FieldModifier="public"
+                Content=""
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,0,0,0"
+                Height="40"
+                Width="50"
+                BorderThickness="0" SnapsToDevicePixels="True">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/Close_Hover.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Close.png"/>
+            </Button.Background>
+        </Button>
+        
+        <Label Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
+        <Image HorizontalAlignment="Center" Height="428" Margin="0,0,0,60" VerticalAlignment="Bottom" Width="428" Source="Resources/BackgroundBlock.png"/>
+        <Image HorizontalAlignment="Center" Height="78" Margin="0,250,0,0" VerticalAlignment="Top" Width="130" Source="Resources/Endless LOGO.png"/>
+        <Label Content="Endless Launcher" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="24" Foreground="White" Padding="0" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+
+        <Button x:Name="Continue"
+            Content="Continue"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,105"
+            Height="40"
+            Width="120"
+            BorderThickness="0" SnapsToDevicePixels="True" FontFamily="Microsoft YaHei UI" FontSize="18" FontWeight="Bold" Click="Continue_Click">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/Button_Hover.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonW.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

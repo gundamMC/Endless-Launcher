@@ -48,8 +48,7 @@
                Height="184"
                Width="1000"
                Source="Resources/HeaderBar.png"
-               MouseDown="HeaderBar_MouseDown"
-               RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+               RenderOptions.BitmapScalingMode="NearestNeighbor" MouseLeftButtonDown="HeaderBar_MouseDown"/>
 
         <Button x:Name="Minimize"
                 Content=""

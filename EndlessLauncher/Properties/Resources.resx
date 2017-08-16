@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BackgroundBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundBlock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,8 +166,14 @@
   <data name="DefaultHead" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\defaulthead.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Endless_LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Endless LOGO.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="HeaderBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HeaderBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeaderBar_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeaderBar_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon_APIDownload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_APIDownload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

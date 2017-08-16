@@ -8,9 +8,12 @@ namespace EndlessLauncher
     public class ConfigClass
     {
         #region PlayerOptions
+        public string DisplayName { get; set; }
+
+
         public string Username { get; set; }
-        
-        
+
+
         public string UUID { get; set; }
 
 
