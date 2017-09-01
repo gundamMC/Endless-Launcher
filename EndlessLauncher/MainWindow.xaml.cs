@@ -27,18 +27,42 @@ namespace EndlessLauncher
         public MainWindow()
         {
             InitializeComponent();
+
+            if (!File.Exists("EnlessConfig.json"))
+            {
+                //Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
+
+            }
+            else
+            {
+                InitializeWindow window = new InitializeWindow();
+                window.Show();
+                this.Hide();
+            }
+
         }
 
+        //
+        // VARIABLES:
+        //
         public static ConfigClass Config;
 
         public List<BackgroundButtonClass> Backgrounds = new List<BackgroundButtonClass>();
+        //
 
-        //public List<Point> IconPoints = new List<Point>();
 
         private void LoadMagnetBackgrounds(Image i)
         {
+            /*
+             Variables:
+
+             Image i = Magnet icon image
+             Button ii = Magnet background button
+             Label IconLabel = Magnet text label
+             */
+
             #region initialize Controls
-            
+
             Button IconBackground = new Button()
             {
                 Name = i.Name + "Background",
@@ -61,14 +85,15 @@ namespace EndlessLauncher
 
             Panel.SetZIndex(IconBackground, -1);
 
+            //End of button background
+            //
+            //Starting button label
 
             string LabelName = "";
             foreach (IconLabelContents.LabelContentClass ii in IconLabelContents.LabelContents)
             {
                 if (i.Name == ii.IconName)
-                {
                     LabelName = ii.LabelText;
-                }
             }
 
             Label IconLabel = new Label()
@@ -106,28 +131,22 @@ namespace EndlessLauncher
             {
                 BackgroundButton = IconBackground,
                 Icon = i,
-                Size = 1
+                Size = 1,
+                TextLabel = IconLabel,
+                Location = new Point(i.Margin.Left, i.Margin.Top)
             });
 
+            //Removes the "taken" points
+            IconPointClass.IconPoints.Remove(new Point(i.Margin.Left, i.Margin.Top));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            if (File.Exists("EnlessConfig.json"))
-            {
-                Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
-            }
-            else {
-                InitializeWindow window = new InitializeWindow();
-                window.Show();
-                this.Hide();
-            }
-
             foreach (Image i in ButtonsGrid.Children)
             {
                 LoadMagnetBackgrounds(i);
             }
+
         }
         
         private void HeaderBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -163,18 +182,21 @@ namespace EndlessLauncher
             targetbutton.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png")));
         }
 
-        private Boolean IsDragging = false;
-        private Image DraggedObject;
-        private Button DraggedBackground;
-        private Label DraggedLabel;
-        private Thickness OriginalPos;
+        #region Magnet Drag Drop
+
+        //
+        // VARIABLES: 
+        //
+        private Boolean IsDragging = false;     //Prevents moving when not dragging
+        private Image DraggedObject;            //Icon image
+        private Button DraggedBackground;       //Button background
+        private Label DraggedLabel;             //Text label
+        private Thickness OriginalPos;          //Original position to calculate new position
 
 
         private void Icon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             IsDragging = true;
-
-            
 
             if (sender is Button)
             {
@@ -206,9 +228,10 @@ namespace EndlessLauncher
             }
 
             OriginalPos = DraggedObject.Margin;
+
+            //Adds the point back into the list so magnet can return
+            IconPointClass.IconPoints.Add(Backgrounds.Find(x => x.BackgroundButton == DraggedBackground).Location);
         }
-
-
 
         private void Icon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -222,12 +245,15 @@ namespace EndlessLauncher
 
             DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground, DraggedLabel);
 
+            int AddedBackgroundIndex = Backgrounds.FindIndex(x => x.BackgroundButton == DraggedBackground);
+            Backgrounds[AddedBackgroundIndex].Location = new Point(DraggedObject.Margin.Left, DraggedObject.Margin.Top);
+
+            //Removes the point since a magnet is already there
+            IconPointClass.IconPoints.Remove(Backgrounds[AddedBackgroundIndex].Location);
+
+            //Ends dragging
             DraggedObject = null;
-
-            //UpdateIconBackgrounds();
         }
-
-        
 
         private void Icon_MouseMove(object sender, MouseEventArgs e)
         {
@@ -241,19 +267,11 @@ namespace EndlessLauncher
 
         }
 
+#endregion
+
         private void HeaderStartGame_Click(object sender, RoutedEventArgs e)
         {
             //Launch.LaunchGame("", 25565, Config.Version, "EN");
-        }
-
-        private void UpdateIcons()
-        {
-            foreach (BackgroundButtonClass i in Backgrounds)
-            {
-                Point relativePoint = i.Icon.TransformToAncestor(this).Transform(new Point(0, 0));
-
-                i.BackgroundButton.Margin = new Thickness(relativePoint.X - 55, relativePoint.Y - 55, 0, 0);
-            }
         }
     }
 }

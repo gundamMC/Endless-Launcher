@@ -47,10 +47,11 @@ namespace EndlessLauncher
             }
         }
 
+
         ///<summary>
         ///Reads the config from Mojang's launcher
         ///</summary>
-        public static MojangAuthInfo GetAuthInfo()
+        public static MojangAuthInfo GetMojangAuthInfo()
         {
 
             if (String.IsNullOrWhiteSpace(GetLauncherConfig()))
@@ -62,10 +63,10 @@ namespace EndlessLauncher
 
             string SelectedAccount = (string)ConfigData["selectedUser"]["account"];
             string SelectedProfile = (string)ConfigData["selectedUser"]["profile"];
+            
 
-            string SelectedVersionNameVar = (string)ConfigData["selectedProfile"];
-
-            return new MojangAuthInfo()
+            //Containing the basic info required to run Endless Launcher
+            MojangAuthInfo returnclass =  new MojangAuthInfo()
             {
                 Displayname = (string)ConfigData["authenticationDatabase"][SelectedAccount]["profiles"][SelectedProfile]["displayName"],
 
@@ -76,11 +77,40 @@ namespace EndlessLauncher
                 ClientToken = Guid.Parse((string)ConfigData["clientToken"]),
 
                 AccessToken = Guid.Parse((string)ConfigData["authenticationDatabase"][SelectedAccount]["accessToken"]),
-
-                SelectedVersion = (string)ConfigData["profiles"][SelectedVersionNameVar]["lastVersionId"],
-
-                SelectedVersionName = SelectedVersionNameVar
             };
+
+
+            #region Get last used profile
+            List<string> profileNames = new List<string>();
+
+            if (profileNames.Count > 0)
+            {
+
+                foreach (string key in ConfigData["profiles"].Keys)
+                {
+                    profileNames.Add(key);
+                }
+
+                string SelectedVersionNameVar = profileNames[0];
+                DateTime LastUsedDate = DateTime.Parse((string)ConfigData["profiles"][SelectedVersionNameVar]["lastUsed"]);
+
+                foreach (string i in profileNames)
+                {
+                    DateTime CurrentProfileDate = DateTime.Parse((string)ConfigData["profiles"][i]["lastUsed"]);
+                    if (CurrentProfileDate > LastUsedDate)
+                    {
+                        SelectedVersionNameVar = i;
+                        LastUsedDate = CurrentProfileDate;
+                    }
+                }
+
+                returnclass.SelectedVersion = (string)ConfigData["profiles"][SelectedVersionNameVar]["lastVersionId"];
+                returnclass.SelectedVersionName = SelectedVersionNameVar;
+            }
+#endregion
+
+
+            return returnclass;
         } 
     }
 }

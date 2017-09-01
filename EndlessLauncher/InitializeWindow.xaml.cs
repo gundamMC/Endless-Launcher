@@ -30,19 +30,23 @@ namespace EndlessLauncher
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            GetMojangLauncherInfo.MojangAuthInfo AuthInfo = GetMojangLauncherInfo.GetAuthInfo();
+            GetMojangLauncherInfo.MojangAuthInfo AuthInfo = GetMojangLauncherInfo.GetMojangAuthInfo();
+
 
             if (!String.IsNullOrWhiteSpace(AuthInfo.Displayname))
             {
-                //Try to refresh token
-                System.Diagnostics.Debug.WriteLine(AuthInfo.Displayname);
-                System.Diagnostics.Debug.WriteLine(AuthInfo.AccessToken);
-                System.Diagnostics.Debug.WriteLine(AuthInfo.ClientToken);
+                //Returned info from mojang launcher correctly
+                //Refresh token
             }
             else
             {
                 //show login page
+                LoginWindow newWindow = new LoginWindow();
+                newWindow.Show();
+                this.Hide();
             }
+
+            
         }
     }
 }

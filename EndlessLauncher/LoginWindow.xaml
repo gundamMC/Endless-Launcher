@@ -8,7 +8,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Height="600" Width="1000" Title="Endless Launcher">
-    
+
     <Window.Background>
         <ImageBrush ImageSource="Resources/DefaultBackground.png"/>
     </Window.Background>
@@ -40,7 +40,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Image x:Name="HeaderBar"
                HorizontalAlignment="Left"
@@ -83,7 +83,10 @@
         </Button>
         <Label Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
         <Image HorizontalAlignment="Center" Height="428" Margin="0,0,0,60" VerticalAlignment="Bottom" Width="428" Source="Resources/BackgroundBlock.png"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="451,314,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
+        
+        <Label Content="Login" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="30" Foreground="White" Padding="0" FontWeight="Bold"/>
+        <Label Content="Please enter your Minecraft account" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="#FFA0A0A0" Padding="0"/>
+        <Label Content="Account (Email)" HorizontalAlignment="Left" Margin="375,255,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
+        <TextBox HorizontalAlignment="Left" Height="40" Margin="375,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="250" FontSize="20"/>
     </Grid>
 </Window>
