@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EndlessLauncher
 {
     /// <summary>
     /// Interaction logic for CloseMessageBox.xaml
     /// </summary>
-    public partial class CloseMessageBox : Window
+    public partial class MessageBoxYesNo : Window
     {
-        public CloseMessageBox()
+        public MessageBoxYesNo(string Message, string YesText, string NoText)
         {
             InitializeComponent();
+
+            InfoText.Text = Message;
+            Accept.Content = YesText;
+            Cancel.Content = NoText;
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
@@ -36,15 +30,14 @@ namespace EndlessLauncher
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
-            //Sets the texture back
-            MainWindow Form = Application.Current.Windows[0] as MainWindow;
-            Form.CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
         }
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            this.DialogResult = true;
+            
         }
     }
 }

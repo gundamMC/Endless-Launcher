@@ -1,4 +1,4 @@
-﻿<Window x:Class="EndlessLauncher.CloseMessageBox"
+﻿<Window x:Class="EndlessLauncher.MessageBoxYesNo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -41,7 +41,7 @@
             </Image.Effect>
         </Image>
         <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="300" Source="Resources/CloseMessageBox_Background.png" MouseDown="Image_MouseDown"/>
-        <Label Content="Close Endless Launcher?" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="20" Width="300" HorizontalContentAlignment="Center" FontWeight="Bold" Padding="0"/>
+        <TextBlock x:Name="InfoText" HorizontalAlignment="Left" Height="66" Margin="0,60,0,0" TextWrapping="Wrap" Text="You must input your username and password" VerticalAlignment="Top" Width="300" FontFamily="Microsoft YaHei UI" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
         <Button x:Name="Minimum"
             Content=""
             HorizontalAlignment="Right"
@@ -73,7 +73,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="Accept"
-            Content="Close"
+            Content="YesText"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="27,140,0,0"
@@ -88,7 +88,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="Cancel"
-            Content="Cancel"
+            Content="NoText"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="157,140,0,0"

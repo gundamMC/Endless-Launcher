@@ -27,5 +27,16 @@ namespace EndlessLauncher
         {
             this.DragMove();
         }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(UsernameInputBox.Text) || String.IsNullOrWhiteSpace(PasswordInputBox.Password))
+            {
+                MessageBoxOK form = new MessageBoxOK("You must input your username and password", "OK");
+                form.ShowDialog();
+            }
+
+            //tries to authenicate using username and password
+        }
     }
 }

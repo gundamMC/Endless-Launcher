@@ -159,8 +159,14 @@ namespace EndlessLauncher
             //Pressed texture
             CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close_pressed.png")));
 
-            CloseMessageBox Form = new CloseMessageBox();
-            Form.ShowDialog();
+            MessageBoxYesNo Form = new MessageBoxYesNo("Close Endless Launcher?", "Close", "Cancel");
+            if (Form.ShowDialog() == true) {
+                System.Windows.Application.Current.Shutdown();
+            }
+            else
+            {
+                CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
+            }
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)

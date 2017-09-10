@@ -65,8 +65,11 @@
     <Compile Include="IconPointClass.cs" />
     <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
-    <Compile Include="CloseMessageBox.xaml.cs">
-      <DependentUpon>CloseMessageBox.xaml</DependentUpon>
+    <Compile Include="MessageBoxOK.xaml.cs">
+      <DependentUpon>MessageBoxOK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxYesNo.xaml.cs">
+      <DependentUpon>MessageBoxYesNo.xaml</DependentUpon>
     </Compile>
     <Compile Include="InitializeWindow.xaml.cs">
       <DependentUpon>InitializeWindow.xaml</DependentUpon>
@@ -84,7 +87,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ConfigClass.cs" />
-    <Page Include="CloseMessageBox.xaml">
+    <Page Include="MessageBoxOK.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MessageBoxYesNo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

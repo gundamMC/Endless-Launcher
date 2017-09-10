@@ -83,10 +83,27 @@
         </Button>
         <Label Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
         <Image HorizontalAlignment="Center" Height="428" Margin="0,0,0,60" VerticalAlignment="Bottom" Width="428" Source="Resources/BackgroundBlock.png"/>
-        
-        <Label Content="Login" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="30" Foreground="White" Padding="0" FontWeight="Bold"/>
+
+        <Label Content="Log in" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="30" Foreground="White" Padding="0" FontWeight="Bold"/>
         <Label Content="Please enter your Minecraft account" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="#FFA0A0A0" Padding="0"/>
         <Label Content="Account (Email)" HorizontalAlignment="Left" Margin="375,255,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
-        <TextBox HorizontalAlignment="Left" Height="40" Margin="375,280,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="250" FontSize="20"/>
+        <TextBox x:Name="UsernameInputBox" HorizontalAlignment="Left" Height="40" Margin="375,280,0,0" VerticalAlignment="Top" Width="250" FontSize="20" FontFamily="Microsoft YaHei UI" Padding="0,6,0,0"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="375,340,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
+        <PasswordBox x:Name="PasswordInputBox" HorizontalAlignment="Left" Height="40" Margin="375,365,0,0" VerticalAlignment="Top" Width="250" FontFamily="Microsoft YaHei UI" FontSize="20" Padding="0,6,0,0"/>
+        <Button x:Name="LoginButton"
+            Content="Log in"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,105"
+            Height="40"
+            Width="120"
+            BorderThickness="0" SnapsToDevicePixels="True" FontFamily="Microsoft YaHei UI" FontSize="18" FontWeight="Bold" Click="LoginButton_Click">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/Button_Hover.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonW.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
