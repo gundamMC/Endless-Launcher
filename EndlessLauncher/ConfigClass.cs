@@ -20,10 +20,10 @@ namespace EndlessLauncher
         public string Directory { get; set; }
 
 
-        public Guid Token { get; set; }
+        public Guid AccessToken { get; set; }
 
 
-        public Guid CToken { get; set; }
+        public Guid ClientToken { get; set; }
 
 
         public Boolean Twitch { get; set; }

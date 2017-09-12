@@ -36,15 +36,15 @@ namespace EndlessLauncher
             key.SetValue("Version", ver.Id);
             key.Close();
 
-            if (App.Config.Token.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
-            if (App.Config.CToken.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
+            if (App.Config.AccessToken.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
+            if (App.Config.ClientToken.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
 
             LaunchOptions Options = new LaunchOptions
             {
                 Version = ver,
                 MaxMemory = App.Config.Maxram,
                 MinMemory = App.Config.Minram,
-                Authenticator = new YggdrasilRefresh(App.Config.Token, App.Config.Twitch, App.Config.CToken),
+                Authenticator = new YggdrasilRefresh(App.Config.AccessToken, App.Config.Twitch, App.Config.ClientToken),
                 Server = new ServerInfo { Address = serverip, Port = port },
             };
 
