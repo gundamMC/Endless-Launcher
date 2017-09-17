@@ -82,7 +82,7 @@
             </Button.Background>
         </Button>
         <Label Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="20,50,0,0" VerticalAlignment="Top" Width="100" Source="Resources/DefaultHead.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="20,50,0,0" VerticalAlignment="Top" Width="100" Source="Resources/Avatar_Default.png"/>
         <Label Content="Hello, gundamMC." HorizontalAlignment="Left" Margin="140,55,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="24" Foreground="White" Padding="0" FontWeight="Bold"/>
         <Label Content="Connected to Mojang Servers." HorizontalAlignment="Left" Margin="140,99,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light"/>
         <Label Content="UUID: XXXX-XXXX-XXXX-XXXX" HorizontalAlignment="Left" Margin="140,131,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light" FontSize="8"/>
@@ -118,5 +118,20 @@
             <Image x:Name="StartGame" HorizontalAlignment="Left" Height="40" Margin="765,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_StartGame.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
 
         </Grid>
+
+        <Button x:Name="ModifyMagnets"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="0,180,10,0"
+            Height="66"
+            Width="66"
+            BorderThickness="0" Click="ModifyMagnets_Click">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/MagnetModify.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/MagnetModify.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

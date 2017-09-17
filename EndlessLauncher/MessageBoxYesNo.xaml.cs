@@ -19,8 +19,7 @@ namespace EndlessLauncher
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            DragMove();
         }
 
         private void Minimum_Click(object sender, RoutedEventArgs e)

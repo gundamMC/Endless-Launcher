@@ -55,7 +55,7 @@
                 Margin="0,0,50,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="Minimize_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/Minimize_Hover.png"/>
             </Button.BorderBrush>
@@ -71,7 +71,7 @@
                 Margin="0,0,0,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="CloseB_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/Close_Hover.png"/>
             </Button.BorderBrush>

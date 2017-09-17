@@ -161,7 +161,7 @@ namespace EndlessLauncher
 
             MessageBoxYesNo Form = new MessageBoxYesNo("Close Endless Launcher?", "Close", "Cancel");
             if (Form.ShowDialog() == true) {
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
             else
             {
@@ -193,77 +193,104 @@ namespace EndlessLauncher
         //
         // VARIABLES: 
         //
-        private Boolean IsDragging = false;     //Prevents moving when not dragging
-        private Image DraggedObject;            //Icon image
-        private Button DraggedBackground;       //Button background
-        private Label DraggedLabel;             //Text label
-        private Thickness OriginalPos;          //Original position to calculate new position
+        private Boolean DraggingEnabled = false;    //Enables dragging / i.e. only allow dragging when in modifying mode
+        private Boolean IsDragging = false;         //Prevents moving when not dragging
+        private Image DraggedObject;                //Icon image
+        private Button DraggedBackground;           //Button background
+        private Label DraggedLabel;                 //Text label
+        private Thickness OriginalPos;              //Original position to calculate new position
 
 
         private void Icon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            IsDragging = true;
-
-            if (sender is Button)
+            if (DraggingEnabled)
             {
-                string Sendername = ((Button)sender).Name;
-                DraggedObject = (Image)this.FindName(Sendername.Replace("Background", ""));
+                IsDragging = true;
 
-                DraggedBackground = sender as Button;
+                if (sender is Button)
+                {
+                    string Sendername = ((Button)sender).Name;
+                    DraggedObject = (Image)this.FindName(Sendername.Replace("Background", ""));
 
-                DraggedLabel = (Label)this.FindName(Sendername.Replace("Background", "Label"));
+                    DraggedBackground = sender as Button;
 
+                    DraggedLabel = (Label)this.FindName(Sendername.Replace("Background", "Label"));
+
+                }
+                if (sender is Label)
+                {
+
+                    string Sendername = ((Label)sender).Name;
+                    DraggedObject = (Image)this.FindName(Sendername.Replace("Label", ""));
+
+                    DraggedBackground = (Button)this.FindName(Sendername.Replace("Label", "Background"));
+
+                    DraggedLabel = sender as Label;
+                }
+                if (sender is Image)
+                {
+                    DraggedObject = sender as Image;
+
+                    DraggedBackground = (Button)this.FindName(DraggedObject.Name + "Background");
+
+                    DraggedLabel = (Label)this.FindName(DraggedObject.Name + "Label");
+                }
+
+                OriginalPos = DraggedObject.Margin;
+
+                //Adds the point back into the list so magnet can return
+                IconPointClass.IconPoints.Add(Backgrounds.Find(x => x.BackgroundButton == DraggedBackground).Location);
             }
-            if (sender is Label)
-            {
-                
-                string Sendername = ((Label)sender).Name;
-                DraggedObject = (Image)this.FindName(Sendername.Replace("Label", ""));
-
-                DraggedBackground = (Button)this.FindName(Sendername.Replace("Label", "Background"));
-
-                DraggedLabel = sender as Label;
-            }
-            if (sender is Image)
-            {
-                DraggedObject = sender as Image;
-
-                DraggedBackground = (Button)this.FindName(DraggedObject.Name + "Background");
-
-                DraggedLabel = (Label)this.FindName(DraggedObject.Name + "Label");
-            }
-
-            OriginalPos = DraggedObject.Margin;
-
-            //Adds the point back into the list so magnet can return
-            IconPointClass.IconPoints.Add(Backgrounds.Find(x => x.BackgroundButton == DraggedBackground).Location);
         }
 
         private void Icon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (DraggedObject == null)
+            if (DraggingEnabled)
             {
-                return;
+                if (DraggedObject == null)
+                {
+                    return;
+                }
+
+                IsDragging = false;
+
+
+                DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground, DraggedLabel);
+
+                int AddedBackgroundIndex = Backgrounds.FindIndex(x => x.BackgroundButton == DraggedBackground);
+                Backgrounds[AddedBackgroundIndex].Location = new Point(DraggedObject.Margin.Left, DraggedObject.Margin.Top);
+
+                //Removes the point since a magnet is already there
+                IconPointClass.IconPoints.Remove(Backgrounds[AddedBackgroundIndex].Location);
+
+                //Ends dragging
+                DraggedObject = null;
             }
+            else //not dragging i.e. is clicking
+            {
+                string ClickedName = "";
 
-            IsDragging = false;
+                if (sender is Image)
+                    ClickedName = ((Image)sender).Name;
 
+                if (sender is Button)
+                    ClickedName = ((Button)sender).Name;
 
-            DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground, DraggedLabel);
+                if (sender is Label)
+                    ClickedName = ((Label)sender).Name;
 
-            int AddedBackgroundIndex = Backgrounds.FindIndex(x => x.BackgroundButton == DraggedBackground);
-            Backgrounds[AddedBackgroundIndex].Location = new Point(DraggedObject.Margin.Left, DraggedObject.Margin.Top);
-
-            //Removes the point since a magnet is already there
-            IconPointClass.IconPoints.Remove(Backgrounds[AddedBackgroundIndex].Location);
-
-            //Ends dragging
-            DraggedObject = null;
+                if (ClickedName.Contains("GameSettings"))
+                {
+                    GameSettingsWindow Window = new GameSettingsWindow();
+                    Window.ShowDialog();
+                }
+            }
+            
         }
 
         private void Icon_MouseMove(object sender, MouseEventArgs e)
         {
-            if (IsDragging && DraggedObject != null)
+            if (IsDragging && DraggedObject != null && DraggingEnabled)
             {
 
                 DraggedObject.Margin = new Thickness(e.GetPosition(this).X - 20, e.GetPosition(this).Y - 20, 0, 0);
@@ -278,6 +305,11 @@ namespace EndlessLauncher
         private void HeaderStartGame_Click(object sender, RoutedEventArgs e)
         {
             //Launch.LaunchGame("", 25565, Config.Version, "EN");
+        }
+
+        private void ModifyMagnets_Click(object sender, RoutedEventArgs e)
+        {
+            DraggingEnabled = !DraggingEnabled;     //Enables / disables dragging
         }
     }
 }

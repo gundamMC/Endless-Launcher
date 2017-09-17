@@ -40,7 +40,7 @@
                 <BlurEffect Radius="15"/>
             </Image.Effect>
         </Image>
-        <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="300" Source="Resources/CloseMessageBox_Background.png" MouseDown="Image_MouseDown"/>
+        <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="300" Source="Resources/MessageBox_Background.png" MouseLeftButtonDown="Image_MouseDown"/>
         <TextBlock x:Name="InfoText" HorizontalAlignment="Left" Height="66" Margin="0,60,0,0" TextWrapping="Wrap" Text="You must input your username and password" VerticalAlignment="Top" Width="300" FontFamily="Microsoft YaHei UI" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
         <Button x:Name="Minimum"
             Content=""
@@ -57,14 +57,14 @@
                 <ImageBrush ImageSource="Resources/MinimizeW.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="OkButton"
+        <Button x:Name="CloseButton"
             Content=""
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Margin="0,0,0,0"
             Height="40"
             Width="50"
-            BorderThickness="0" SnapsToDevicePixels="True">
+            BorderThickness="0" SnapsToDevicePixels="True" Click="CloseButton_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/CloseW_Hover.png"/>
             </Button.BorderBrush>

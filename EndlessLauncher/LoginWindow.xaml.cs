@@ -7,6 +7,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Net.Http;
 using LitJson;
+using System.IO;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace EndlessLauncher
 {
@@ -68,6 +71,11 @@ namespace EndlessLauncher
                 App.Config.UUID = Response.Profiles[0].Id;                      // UUID
                 App.Config.AccessToken = Guid.Parse(Response.AccessToken);      // Access Token
                 App.Config.ClientToken = Guid.Parse(Response.ClientToken);      // Client Token
+
+                File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\" + "config.json", JsonMapper.ToJson(App.Config));     // saves config just in case...
+
+                this.Hide();
+                App.Current.MainWindow.Show();
             }
             else
             {
@@ -125,6 +133,27 @@ namespace EndlessLauncher
             public string ClientToken { get; set; }
             public List<ProfilesList> Profiles { get; set; }
             public List<Usersid> User { get; set; }
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseB_Click(object sender, RoutedEventArgs e)
+        {
+            //Pressed texture
+            CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close_pressed.png")));
+
+            MessageBoxYesNo Form = new MessageBoxYesNo("Close Endless Launcher?", "Close", "Cancel");
+            if (Form.ShowDialog() == true)
+            {
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
+            }
         }
     }
 }

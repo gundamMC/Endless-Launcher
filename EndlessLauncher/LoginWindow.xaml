@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EndlessLauncher"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -57,7 +56,7 @@
                 Margin="0,0,50,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="Minimize_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/Minimize_Hover.png"/>
             </Button.BorderBrush>
@@ -73,7 +72,7 @@
                 Margin="0,0,0,0"
                 Height="40"
                 Width="50"
-                BorderThickness="0" SnapsToDevicePixels="True">
+                BorderThickness="0" SnapsToDevicePixels="True" Click="CloseB_Click">
             <Button.BorderBrush>
                 <ImageBrush ImageSource="Resources/Close_Hover.png"/>
             </Button.BorderBrush>

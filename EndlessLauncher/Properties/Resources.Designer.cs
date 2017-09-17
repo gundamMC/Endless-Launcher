@@ -63,9 +63,39 @@ namespace EndlessLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Avatar_Default {
+            get {
+                object obj = ResourceManager.GetObject("Avatar_Default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Avatar_Shadow {
+            get {
+                object obj = ResourceManager.GetObject("Avatar_Shadow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BackgroundBlock {
             get {
                 object obj = ResourceManager.GetObject("BackgroundBlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackgroundOverlay_400x600 {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundOverlay_400x600", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,16 +193,6 @@ namespace EndlessLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CloseMessageBox_Background {
-            get {
-                object obj = ResourceManager.GetObject("CloseMessageBox_Background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap CloseW {
             get {
                 object obj = ResourceManager.GetObject("CloseW", resourceCulture);
@@ -206,16 +226,6 @@ namespace EndlessLauncher.Properties {
         internal static System.Drawing.Bitmap DefaultBackground {
             get {
                 object obj = ResourceManager.GetObject("DefaultBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DefaultHead {
-            get {
-                object obj = ResourceManager.GetObject("DefaultHead", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -376,6 +386,26 @@ namespace EndlessLauncher.Properties {
         internal static System.Drawing.Bitmap MagnetBackground_Pressed {
             get {
                 object obj = ResourceManager.GetObject("MagnetBackground_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MagnetModify {
+            get {
+                object obj = ResourceManager.GetObject("MagnetModify", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MessageBox_Background {
+            get {
+                object obj = ResourceManager.GetObject("MessageBox_Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EndlessLauncher
 {
@@ -25,7 +18,7 @@ namespace EndlessLauncher
 
         private void HeaderBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void Continue_Click(object sender, RoutedEventArgs e)
@@ -47,6 +40,27 @@ namespace EndlessLauncher
             }
 
             
+        }
+
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void CloseB_Click(object sender, RoutedEventArgs e)
+        {
+            //Pressed texture
+            CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close_pressed.png")));
+
+            MessageBoxYesNo Form = new MessageBoxYesNo("Close Endless Launcher?", "Close", "Cancel");
+            if (Form.ShowDialog() == true)
+            {
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                CloseB.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Close.png")));
+            }
         }
     }
 }

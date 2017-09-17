@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameSettingsWindow.xaml.cs">
+      <DependentUpon>GameSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetMojangLauncherInfo.cs" />
     <Compile Include="IconLabelContents.cs" />
     <Compile Include="IconPointClass.cs" />
@@ -81,15 +84,19 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PointDistance.cs" />
-    <Compile Include="Tools\GetRootPath.cs" />
-    <Compile Include="Internet.cs" />
-    <Compile Include="Tools\GetJavaPath.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tools\GetRootPath.cs" />
+    <Compile Include="Internet.cs" />
+    <Compile Include="Tools\GetJavaPath.cs" />
     <Compile Include="ConfigClass.cs" />
+    <Page Include="GameSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MessageBoxOK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,7 +174,7 @@
     <Resource Include="Resources\StartGame_Hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\CloseMessageBox_Background.png" />
+    <Resource Include="Resources\MessageBox_Background.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CloseW.png" />
@@ -264,6 +271,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\HeaderBar_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BackgroundOverlay_400x600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MagnetModify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Avatar_Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Avatar_Shadow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
