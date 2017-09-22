@@ -35,6 +35,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <ContentPresenter ContentSource="SelectedContent" />
+                        <!-- Removes everything and leaves only the content behind.
+                        TabItems were not added because it is easier to set up external controls-->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -80,6 +93,35 @@
 
         <Image HorizontalAlignment="Left" Height="120" Margin="10,40,0,0" VerticalAlignment="Top" Width="120" Source="Resources/Avatar_Shadow.png"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="20,50,0,0" VerticalAlignment="Top" Width="100" Source="Resources/Avatar_Default.png"/>
+        <Label Content="Hello, gundamMC" HorizontalAlignment="Left" Margin="140,50,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="24" Foreground="Black" Padding="0" FontWeight="Bold"/>
+        <Button x:Name="LogoutButton"
+            Content="Logout"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="140,110,0,0"
+            Height="40"
+            Width="120"
+            BorderThickness="0" SnapsToDevicePixels="True" FontSize="16" FontFamily="Microsoft YaHei UI" FontWeight="Bold" Foreground="White">
+            <Button.BorderBrush>
+                <ImageBrush ImageSource="Resources/Button_Hover.png"/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/Button.png"/>
+            </Button.Background>
+        </Button>
+        <TabControl x:Name="Tabs" HorizontalAlignment="Left" Height="240" Margin="20,304,0,0" VerticalAlignment="Top" Width="360">
+            <TabItem Header="TabItem">
+                <Grid>
+                    <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height ="50" Margin="55" Background="#FF896363"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid>
+                    <Button Content="HAaaaaaa" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height ="50" Margin="55" Background="#FFE60C0C"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label x:Name="AccountSettingsLabel" Content="AccountSettingsLabel" HorizontalAlignment="Left" Height="51" Margin="50,232,0,0" VerticalAlignment="Top" Width="135" MouseLeftButtonUp="AccountSettingsLabel_MouseLeftButtonUp"/>
 
     </Grid>
 </Window>

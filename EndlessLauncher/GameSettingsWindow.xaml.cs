@@ -38,5 +38,10 @@ namespace EndlessLauncher
         {
             this.Close();
         }
+
+        private void AccountSettingsLabel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Tabs.SelectedIndex = (Tabs.SelectedIndex == 0) ? 1 : 0;
+        }
     }
 }

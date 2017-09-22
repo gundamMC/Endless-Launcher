@@ -162,9 +162,6 @@
     <Resource Include="Resources\Close_Hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\DefaultHead.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\StartGame.png" />
   </ItemGroup>
   <ItemGroup>
