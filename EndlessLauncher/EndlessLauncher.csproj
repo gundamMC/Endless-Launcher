@@ -67,10 +67,10 @@
       <DependentUpon>GameSettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GetMojangLauncherInfo.cs" />
-    <Compile Include="IconLabelContents.cs" />
     <Compile Include="IconPointClass.cs" />
     <Compile Include="BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
+    <Compile Include="LanguageClass.cs" />
     <Compile Include="MessageBoxOK.xaml.cs">
       <DependentUpon>MessageBoxOK.xaml</DependentUpon>
     </Compile>

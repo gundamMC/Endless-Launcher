@@ -47,7 +47,10 @@ namespace EndlessLauncher
         public string AutoClose { get; set; }
 
 
-        public string Language { get; set; }
+        public string IconLanguage { get; set; }    // built-in languages of EN and CN
+
+
+        public Boolean TextLanguage { get; set; }   // load built-in language (EN) or external langauge file
 
 
         public string Background {get;set;}

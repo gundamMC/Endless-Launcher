@@ -1,21 +1,12 @@
 ﻿using LitJson;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EndlessLauncher
 {
@@ -24,14 +15,19 @@ namespace EndlessLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
 
-            if (!File.Exists("EnlessConfig.json"))
+            if (File.Exists("EnlessConfig.json"))
             {
-                //Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
+                App.Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
+                App.Lang = JsonMapper.ToObject<LanguageClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
 
+                // load language file
+
+                InitializeText();
             }
             else
             {
@@ -45,11 +41,24 @@ namespace EndlessLauncher
         //
         // VARIABLES:
         //
-        public static ConfigClass Config;
-
         public List<BackgroundButtonClass> Backgrounds = new List<BackgroundButtonClass>();
         //
 
+        public void InitializeText()
+        {
+
+            TitleLabel.Content = App.Lang.MainWindow.Title;
+
+            HelloLabel.Content = App.Lang.MainWindow.Hello.Replace("{0}", App.Config.DisplayName);
+
+            ConnectionLabel.Content = App.Lang.MainWindow.ConnectionText.Connected;    // add status check
+
+            UUIDLabel.Content = App.Lang.MainWindow.UUID.Replace("{0}", App.Config.UUID);
+
+            SelectedVersionLabel.Content = App.Lang.MainWindow.SelectedVersion;
+
+            HeaderStartGame.Content = App.Lang.MainWindow.StartGame;
+        }
 
         private void LoadMagnetBackgrounds(Image i)
         {
@@ -90,7 +99,7 @@ namespace EndlessLauncher
             //Starting button label
 
             string LabelName = "";
-            foreach (IconLabelContents.LabelContentClass ii in IconLabelContents.LabelContents)
+            foreach (LanguageClass.LabelContentClass ii in App.Lang.LabelContents)
             {
                 if (i.Name == ii.IconName)
                     LabelName = ii.LabelText;

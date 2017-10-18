@@ -18,7 +18,14 @@ namespace EndlessLauncher
     public partial class App : Application
     {
         //Sets global config
-        public static ConfigClass Config;
+        public static ConfigClass Config = new ConfigClass();
+
+        public static LanguageClass Lang = new LanguageClass() {
+            MainWindow = new LanguageClass.MainWindowClass()
+            {
+                ConnectionText = new LanguageClass.ConnectionText()
+            }
+        };
 
 
         // Initializes launcher core

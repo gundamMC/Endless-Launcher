@@ -81,13 +81,13 @@
                 <ImageBrush ImageSource="Resources/Close.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
+        <Label x:Name="TitleLabel" Content="Endless Launcher" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="20,50,0,0" VerticalAlignment="Top" Width="100" Source="Resources/Avatar_Default.png"/>
-        <Label Content="Hello, gundamMC." HorizontalAlignment="Left" Margin="140,55,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="24" Foreground="White" Padding="0" FontWeight="Bold"/>
-        <Label Content="Connected to Mojang Servers." HorizontalAlignment="Left" Margin="140,99,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light"/>
-        <Label Content="UUID: XXXX-XXXX-XXXX-XXXX" HorizontalAlignment="Left" Margin="140,131,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light" FontSize="8"/>
-        <Label Content="Selected version" HorizontalAlignment="Right" Margin="0,47,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0" FontWeight="Bold" HorizontalContentAlignment="Right"/>
-        <Label Content="1.12 - Forge" HorizontalAlignment="Right" Margin="0,71,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" HorizontalContentAlignment="Right"/>
+        <Label x:Name="HelloLabel" Content="Hello, gundamMC." HorizontalAlignment="Left" Margin="140,55,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="24" Foreground="White" Padding="0" FontWeight="Bold"/>
+        <Label x:Name="ConnectionLabel" Content="Connected to Mojang Servers." HorizontalAlignment="Left" Margin="140,99,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light"/>
+        <Label x:Name="UUIDLabel" Content="UUID: XXXX-XXXX-XXXX-XXXX" HorizontalAlignment="Left" Margin="140,131,0,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" FontWeight="Light" FontSize="8"/>
+        <Label x:Name="SelectedVersionLabel" Content="Selected version" HorizontalAlignment="Right" Margin="0,47,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" FontSize="14" Foreground="White" Padding="0" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+        <Label x:Name="VersionLabel" Content="1.12 - Forge" HorizontalAlignment="Right" Margin="0,71,30,0" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI" Foreground="White" Padding="0" HorizontalContentAlignment="Right"/>
         <Button x:Name="HeaderStartGame"
             Content="Start Game"
             HorizontalAlignment="Right"

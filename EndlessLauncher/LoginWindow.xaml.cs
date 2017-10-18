@@ -74,8 +74,14 @@ namespace EndlessLauncher
 
                 File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\" + "config.json", JsonMapper.ToJson(App.Config));     // saves config just in case...
 
+                // Start MainWindow
+
                 this.Hide();
-                App.Current.MainWindow.Show();
+
+                // Reloads the text
+                MainWindow MainWindow = (MainWindow)App.Current.MainWindow;
+                MainWindow.InitializeText();
+                MainWindow.Show();
             }
             else
             {
