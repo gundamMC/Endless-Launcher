@@ -20,12 +20,26 @@ namespace EndlessLauncher
         {
             InitializeComponent();
 
-            if (File.Exists("EnlessConfig.json"))
+            if (!File.Exists("EnlessConfig.json"))
             {
-                App.Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
-                App.Lang = JsonMapper.ToObject<LanguageClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
+                //App.Config = JsonMapper.ToObject<ConfigClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
 
-                // load language file
+                if (App.Config.TextLanguage && File.Exists("EndlessLang.json"))
+
+                    App.Lang = JsonMapper.ToObject<LanguageClass>(System.IO.File.ReadAllText("EnlessConfig.json"));
+
+                else
+                {   // load default english text
+                    App.Lang.MainWindow.Title = "Endless Launcher";
+                    App.Lang.MainWindow.Hello = "Hello, {0}";
+                    App.Lang.MainWindow.ConnectionText.Connected = "Connected to Mojang servers";
+                    App.Lang.MainWindow.ConnectionText.Failed = "Could not establish connection to Mojang servers";
+                    App.Lang.MainWindow.ConnectionText.ConnectionLost = "Connection to Mojang servers was lost";
+                    App.Lang.MainWindow.UUID = "UUID: {0}";
+                    App.Lang.MainWindow.SelectedVersion = "Selected version";
+                    App.Lang.MainWindow.StartGame = "Start Game";
+                }
+                    
 
                 InitializeText();
             }
@@ -83,7 +97,9 @@ namespace EndlessLauncher
                 //Effect = new System.Windows.Media.Effects.BlurEffect() { Radius = 20, KernelType = System.Windows.Media.Effects.KernelType.Gaussian },
                 //This seems to only apply the blur to itself, excluding the background image
                 Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png"))),
-                BorderBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png")))
+                BorderBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png"))),
+
+                ContextMenu = GameSettings.ContextMenu
             };
 
             IconBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;

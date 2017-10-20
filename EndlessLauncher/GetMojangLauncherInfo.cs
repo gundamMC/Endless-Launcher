@@ -63,7 +63,7 @@ namespace EndlessLauncher
 
             string SelectedAccount = (string)ConfigData["selectedUser"]["account"];
             string SelectedProfile = (string)ConfigData["selectedUser"]["profile"];
-            
+
 
             //Containing the basic info required to run Endless Launcher
             MojangAuthInfo returnclass =  new MojangAuthInfo()
