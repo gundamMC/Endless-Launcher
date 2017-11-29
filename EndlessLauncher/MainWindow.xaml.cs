@@ -1,6 +1,7 @@
 ﻿using LitJson;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,6 +59,8 @@ namespace EndlessLauncher
         public List<BackgroundButtonClass> Backgrounds = new List<BackgroundButtonClass>();
         //
 
+        #region UI Methods
+
         public void InitializeText()
         {
 
@@ -67,20 +70,21 @@ namespace EndlessLauncher
 
             ConnectionLabel.Content = App.Lang.MainWindow.ConnectionText.Connected;    // add status check
 
-            UUIDLabel.Content = App.Lang.MainWindow.UUID.Replace("{0}", App.Config.UUID);
+            UUIDLabel.Content = App.Lang.MainWindow.UUID.Replace("{0}", App.Config.UUID.ToString());
 
             SelectedVersionLabel.Content = App.Lang.MainWindow.SelectedVersion;
 
             HeaderStartGame.Content = App.Lang.MainWindow.StartGame;
         }
 
-        private void LoadMagnetBackgrounds(Image i)
+        private void LoadMagnetBackgrounds(Image IconImage)
         {
             /*
              Variables:
 
-             Image i = Magnet icon image
-             Button ii = Magnet background button
+             Image IconImage = Magnet icon image
+             Button IconBackground = Magnet background button
+             LabelContentClass ii = LabelContent storage object
              Label IconLabel = Magnet text label
              */
 
@@ -89,11 +93,16 @@ namespace EndlessLauncher
             ContextMenu IconContextMenu = new ContextMenu();
 
             IconContextMenu.Items.Add("Resize (Large)");
-            IconContextMenu.Items.Add("Hide");
+            MenuItem HideItem = new MenuItem() { Header = "Hide"};
+            HideItem.Click += ContextMenuHide;
+            IconContextMenu.Items.Add(HideItem);
+            IconContextMenu.Name = IconImage.Name + "ContextMenu";
+            this.RegisterName(IconImage.Name + "ContextMenu", IconContextMenu);
+            
 
             Button IconBackground = new Button()
             {
-                Name = i.Name + "Background",
+                Name = IconImage.Name + "Background",
                 Height = 150,
                 Width = 150,
                 BorderThickness = new Thickness(0),
@@ -107,11 +116,13 @@ namespace EndlessLauncher
                 ContextMenu = IconContextMenu
             };
 
+            IconImage.ContextMenu = IconContextMenu;
+
             IconBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
             IconBackground.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
             IconBackground.PreviewMouseMove += Icon_MouseMove;
 
-            this.RegisterName(i.Name + "Background", IconBackground);
+            this.RegisterName(IconImage.Name + "Background", IconBackground);
 
             Panel.SetZIndex(IconBackground, -1);
 
@@ -122,13 +133,13 @@ namespace EndlessLauncher
             string LabelName = "";
             foreach (LanguageClass.LabelContentClass ii in App.Lang.LabelContents)
             {
-                if (i.Name == ii.IconName)
+                if (IconImage.Name == ii.IconName)
                     LabelName = ii.LabelText;
             }
 
             Label IconLabel = new Label()
             {
-                Name = i.Name + "Label",
+                Name = IconImage.Name + "Label",
                 BorderThickness = new Thickness(0),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
@@ -144,13 +155,13 @@ namespace EndlessLauncher
             IconLabel.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
             IconLabel.PreviewMouseMove += Icon_MouseMove;
 
-            this.RegisterName(i.Name + "Label", IconLabel);
+            this.RegisterName(IconImage.Name + "Label", IconLabel);
 
             #endregion
 
 
             //Calculates the X and Y cords based on the icons
-            Point relativePoint = i.TransformToAncestor(this).Transform(new Point(0, 0));
+            Point relativePoint = IconImage.TransformToAncestor(this).Transform(new Point(0, 0));
             IconBackground.Margin = new Thickness(relativePoint.X - 55, relativePoint.Y - 55, 0, 0);
             IconLabel.Margin = new Thickness(relativePoint.X - 35, relativePoint.Y + 50, 0, 0);
 
@@ -160,15 +171,39 @@ namespace EndlessLauncher
             Backgrounds.Add(new BackgroundButtonClass()
             {
                 BackgroundButton = IconBackground,
-                Icon = i,
+                Icon = IconImage,
                 Size = 1,
                 TextLabel = IconLabel,
-                Location = new Point(i.Margin.Left, i.Margin.Top)
+                Location = new Point(IconImage.Margin.Left, IconImage.Margin.Top)
             });
 
             //Removes the "taken" points
-            IconPointClass.IconPoints.Remove(new Point(i.Margin.Left, i.Margin.Top));
+            IconPointClass.IconPoints.Remove(new Point(IconImage.Margin.Left, IconImage.Margin.Top));
         }
+
+        private void ContextMenuHide(object sender, RoutedEventArgs e)
+        {
+            string name = ((ContextMenu)((MenuItem)sender).Parent).Name.Replace("ContextMenu", "");
+            
+            Image IconImage = (Image)this.FindName(name);
+            Button IconBackground = (Button)this.FindName(name + "Background");
+            Label IconLabel = (Label)this.FindName(name + "Label");
+
+            HideIcon(IconImage, IconBackground, IconLabel);
+        }
+
+        private void HideIcon(Image IconImage, Button IconBackground, Label IconLabel)
+        {
+            IconImage.Visibility = Visibility.Hidden;
+            IconBackground.Visibility = Visibility.Hidden;
+            IconLabel.Visibility = Visibility.Hidden;
+
+            IconPointClass.IconPoints.Add(new Point(IconImage.Margin.Left, IconImage.Margin.Top)); // adds point back to the list
+        }
+
+        #endregion
+
+        #region UI Builder
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -217,6 +252,8 @@ namespace EndlessLauncher
             var targetbutton = (Button)this.FindName(imagename + "Background");
             targetbutton.Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png")));
         }
+
+#endregion
 
         #region Magnet Drag Drop
 
@@ -334,7 +371,7 @@ namespace EndlessLauncher
 
         private void HeaderStartGame_Click(object sender, RoutedEventArgs e)
         {
-            //Launch.LaunchGame("", 25565, Config.Version, "EN");
+            Launch.LaunchGame("", 0, App.Core.GetVersion(App.Config.Version), "EN");
         }
 
         private void ModifyMagnets_Click(object sender, RoutedEventArgs e)

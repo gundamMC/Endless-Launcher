@@ -1,11 +1,9 @@
 ﻿using KMCCC.Authentication;
 using KMCCC.Launcher;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace EndlessLauncher
 {
@@ -13,42 +11,46 @@ namespace EndlessLauncher
     {
         public static void LaunchGame(string serverip, ushort port, KMCCC.Launcher.Version ver, string lang)
         {
-            /*
-             This code is taken from the "old" Endless Launcher that was written with winforms
-             Please ignore all the messageboxes and a bunch of really bad code (I mean... it works... right?)
-             I'm planning to rework this section...
-                                                                   - gundamMC
-             */
 
-            if (App.Config.Username == "n/a")
+            if (String.IsNullOrWhiteSpace(App.Config.DisplayName) || App.Config.AccessToken == null || App.Config.ClientToken == null)  
             {
-                //MessageBox.Show("Please log in", "Endless Launcher");
+                // this probably won't happen, but just be sure...
+                MessageBoxOK MessageBox = new MessageBoxOK("Please re-login", "OK");
+                MessageBox.ShowDialog();
                 return;
             }
+
+            if (ver == null)
+                if (App.Core.GetVersions().First() != null)
+                    ver = App.Core.GetVersions().First();
+                else
+                {
+                    new MessageBoxOK("Failed to load versions, please download a version", "OK").ShowDialog();
+                    return;
+                }
 
             // Lost lib list
             List<string> lostFlie = new List<string>();
 
             lostFlie.Clear(); //Clear lost libs list, prevent re-launching causing problems
 
-            Microsoft.Win32.RegistryKey key;
-            key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\EndlessLauncher\Settings");
-            key.SetValue("Version", ver.Id);
-            key.Close();
-
-            if (App.Config.AccessToken.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
-            if (App.Config.ClientToken.ToString() == "n/a") { /*MessageBox.Show("Error", "Please re-login");*/ return; }
-
             LaunchOptions Options = new LaunchOptions
             {
                 Version = ver,
-                MaxMemory = App.Config.Maxram,
-                MinMemory = App.Config.Minram,
                 Authenticator = new YggdrasilRefresh(App.Config.AccessToken, App.Config.Twitch, App.Config.ClientToken),
-                Server = new ServerInfo { Address = serverip, Port = port },
             };
 
-            if (App.Config.WindowSize != "n/a")
+            if (App.Config.Maxram != 0)
+                Options.MaxMemory = App.Config.Maxram;
+
+            if (App.Config.Minram != 0)
+                Options.MinMemory = App.Config.Minram;
+
+            if (!String.IsNullOrWhiteSpace(serverip) && port != 0)
+                Options.Server = new ServerInfo { Address = serverip, Port = port };
+
+
+            if (!String.IsNullOrWhiteSpace(App.Config.WindowSize))
             {
                 ushort Height = ushort.Parse(App.Config.WindowSize.Split(',')[0]);
                 ushort Width = ushort.Parse(App.Config.WindowSize.Split(',')[1]);
@@ -86,32 +88,36 @@ namespace EndlessLauncher
             catch
             { }
 
-            var result = App.Core.Launch(Options);
+            LaunchResult result = App.Core.Launch(Options);
             //LAUNCH
 
-            if (!result.Success)
-                //Language support
+            if (!result.Success)    // launch failed
             {
+                MessageBoxOK form;
+
                 switch (result.ErrorType)
                 {
                     case ErrorType.NoJAVA:
-                        //MessageBox.Show("Java error. Maybe try reinstalling Java?\nERROR：" + result.ErrorMessage, "Minecraft was not able to launch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        form = new MessageBoxOK("Java error, try re-installing java", "OK");
+                        form.ShowDialog();
                         break;
                     case ErrorType.AuthenticationFailed:
-                        //MessageBox.Show("Unable to authorize the account. Please try resign-in.", "Minecraft was not able to launch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        form = new MessageBoxOK("Authentication error, try re-logging in", "OK");
+                        form.ShowDialog();
                         break;
                     case ErrorType.UncompressingFailed:
-                        //MessageBox.Show("Game files missing or corrupted.\nPlease check your libraries files.\nERROR：" + result.ErrorMessage, "Minecraft was not able to launch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        form = new MessageBoxOK("Game files missing or corrupted, try re-dowloading version", "OK");
+                        form.ShowDialog();
                         break;
                     default:
-                        //MessageBox.Show(result.ErrorMessage + "\n" +
-                        //    (result.Exception?.StackTrace), "Unexpected Error:");
+                        form = new MessageBoxOK("Unexpected Error : " + result.ErrorMessage + " : " + result.Exception?.StackTrace, "OK");
+                        form.ShowDialog();
                         break;
                 }
             }
             if (result.Success == true)
             {
-                //Successful launch
+                //Successful launch, auto-close to-be implemented
             }
         }
     }

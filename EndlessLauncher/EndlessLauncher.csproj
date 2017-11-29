@@ -67,8 +67,8 @@
       <DependentUpon>GameSettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GetMojangLauncherInfo.cs" />
-    <Compile Include="IconPointClass.cs" />
-    <Compile Include="BackgroundButtonList.cs" />
+    <Compile Include="Structures\IconPointClass.cs" />
+    <Compile Include="Structures\BackgroundButtonList.cs" />
     <Compile Include="BMCLOptifine.cs" />
     <Compile Include="LanguageClass.cs" />
     <Compile Include="MessageBoxOK.xaml.cs">
@@ -83,7 +83,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PointDistance.cs" />
+    <Compile Include="Tools\PointDistance.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

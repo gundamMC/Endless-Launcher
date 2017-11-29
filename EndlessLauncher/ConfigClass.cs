@@ -14,7 +14,7 @@ namespace EndlessLauncher
         public string Username { get; set; }
 
 
-        public string UUID { get; set; }
+        public Guid UUID { get; set; }
 
 
         public string Directory { get; set; }

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EndlessLauncher"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -154,8 +153,7 @@
 
         <Grid x:Name="ButtonsGrid" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="1000">
 
-            <Image x:Name="GameSettings" HorizontalAlignment="Left" Height="40" Margin="195,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_GameSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove">
-            </Image>
+            <Image x:Name="GameSettings" HorizontalAlignment="Left" Height="40" Margin="195,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_GameSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove" />
             <Image x:Name="LauncherSettings" HorizontalAlignment="Left" Height="40" Margin="325,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_LauncherSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="ResourceAndShaderPacks" HorizontalAlignment="Left" Height="40" Margin="195,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ResourceAndShaderPacks.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="APIDownload" HorizontalAlignment="Left" Height="40" Margin="325,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_APIDownload.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>

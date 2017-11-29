@@ -14,6 +14,12 @@ namespace EndlessLauncher
 
             InfoText.Text = Message;
             Ok.Content = OkText;
+
+            if (OkText.Length > 50) // "dyanmic" font size
+                Ok.FontSize = 18;
+
+            if (OkText.Length > 100)
+                Ok.FontSize = 15;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)

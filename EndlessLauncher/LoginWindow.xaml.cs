@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -68,20 +67,18 @@ namespace EndlessLauncher
 
                 App.Config.Username = UsernameInputBox.Text;                    // Email / account username
                 App.Config.DisplayName = Response.Profiles[0].Name;             // In game name
-                App.Config.UUID = Response.Profiles[0].Id;                      // UUID
+                App.Config.UUID = Guid.Parse(Response.Profiles[0].Id);                      // UUID
                 App.Config.AccessToken = Guid.Parse(Response.AccessToken);      // Access Token
                 App.Config.ClientToken = Guid.Parse(Response.ClientToken);      // Client Token
 
                 File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\" + "config.json", JsonMapper.ToJson(App.Config));     // saves config just in case...
 
                 // Start MainWindow
-
                 this.Hide();
-
-                // Reloads the text
                 MainWindow MainWindow = (MainWindow)App.Current.MainWindow;
-                MainWindow.InitializeText();
+                MainWindow.InitializeText();    // reload text so it display the user's username
                 MainWindow.Show();
+                this.Close();
             }
             else
             {

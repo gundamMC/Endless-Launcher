@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -30,6 +31,15 @@ namespace EndlessLauncher
             {
                 //Returned info from mojang launcher correctly
                 //Refresh token
+
+                App.Config.Username = AuthInfo.Username;                  // Email / account username
+                App.Config.DisplayName = AuthInfo.Displayname;             // In game name
+                App.Config.UUID = AuthInfo.UUID;                      // UUID
+                App.Config.AccessToken = AuthInfo.AccessToken;      // Access Token
+                App.Config.ClientToken = AuthInfo.ClientToken;      // Client Token
+
+                File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\" + "config.json", LitJson.JsonMapper.ToJson(App.Config));     // saves config just in case...
+
             }
             else
             {
