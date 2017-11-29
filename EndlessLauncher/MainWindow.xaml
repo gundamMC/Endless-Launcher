@@ -62,7 +62,7 @@
         </Style>
 
         <Style TargetType="{x:Type MenuItem}">
-            
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
@@ -86,6 +86,7 @@
                 </Trigger>
             </Style.Triggers>-->
         </Style>
+
     </Window.Resources>
 
     <Grid x:Name="MainGrid">
@@ -154,13 +155,6 @@
         <Grid x:Name="ButtonsGrid" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="1000">
 
             <Image x:Name="GameSettings" HorizontalAlignment="Left" Height="40" Margin="195,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_GameSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove">
-                <Image.ContextMenu>
-                    <ContextMenu Name="ha">
-                        <MenuItem Header="Edit"/>
-                        <MenuItem Header="Edit2"/>
-                        <MenuItem Header="Edit3"/>
-                    </ContextMenu>
-                </Image.ContextMenu>
             </Image>
             <Image x:Name="LauncherSettings" HorizontalAlignment="Left" Height="40" Margin="325,270,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_LauncherSettings.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>
             <Image x:Name="ResourceAndShaderPacks" HorizontalAlignment="Left" Height="40" Margin="195,420,0,0" VerticalAlignment="Top" Width="40" Source="Resources/Icon_ResourceAndShaderPacks.png" Stretch="None" MouseEnter="Icon_MouseEnter" MouseLeave="Icon_MouseLeave" MouseLeftButtonDown="Icon_MouseLeftButtonDown" MouseLeftButtonUp="Icon_MouseLeftButtonUp" MouseMove="Icon_MouseMove"/>

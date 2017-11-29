@@ -86,6 +86,11 @@ namespace EndlessLauncher
 
             #region initialize Controls
 
+            ContextMenu IconContextMenu = new ContextMenu();
+
+            IconContextMenu.Items.Add("Resize (Large)");
+            IconContextMenu.Items.Add("Hide");
+
             Button IconBackground = new Button()
             {
                 Name = i.Name + "Background",
@@ -99,7 +104,7 @@ namespace EndlessLauncher
                 Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png"))),
                 BorderBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png"))),
 
-                ContextMenu = GameSettings.ContextMenu
+                ContextMenu = IconContextMenu
             };
 
             IconBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
