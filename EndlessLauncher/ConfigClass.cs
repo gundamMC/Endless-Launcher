@@ -44,7 +44,7 @@ namespace EndlessLauncher
         public string Magnets { get; set; }
 
 
-        public string AutoClose { get; set; }
+        public Boolean AutoClose { get; set; }
 
 
         public string IconLanguage { get; set; }    // built-in languages of EN and CN
@@ -63,5 +63,33 @@ namespace EndlessLauncher
 
 
         #endregion
+
+        public void Initialize()
+        {
+            Directory = GetRootPath.RootPath();
+
+            Twitch = false;
+
+            Minram = 0;
+
+            Maxram = 1024;
+
+            WindowSize = "";
+
+            Magnets = "";
+
+            AutoClose = false;
+
+            IconLanguage = "EN";
+
+            TextLanguage = true;
+
+            Background = "";
+
+            DownloadSource = "MOJANG";
+
+            Version = "";
+
+        }
     }
 }

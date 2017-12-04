@@ -9,20 +9,32 @@ namespace EndlessLauncher
 {
     public class BackgroundButtonClass
     {
-        public Button BackgroundButton { get; set; }
-
 
         public Image Icon { get; set; }
+
+
+        public Button BackgroundButton { get; set; }
 
 
         public Label TextLabel { get; set; }
 
 
-        public int Size { get; set; }
+        public int Width { get; set; }
+
+
+        public int BackgroundOffset { get; set; }
+
+
+        public int LabelOffset { get; set; }
 
 
         public Point Location { get; set; }
 
+
+        public Point ExtendedLocation { get; set; }
+
+
+        public int Index { get; set; }
 
     }
 }
