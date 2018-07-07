@@ -77,126 +77,16 @@ namespace EndlessLauncher
             HeaderStartGame.Content = App.Lang.MainWindow.StartGame;
         }
 
-        int IconCount = 0;
-
-        private void LoadMagnetBackgrounds(Image IconImage)
-        {
-            /*
-             Variables:
-
-             Image IconImage                   = Magnet icon image
-             Button IconBackground             = Magnet background button
-             Label IconLabel                   = Magnet text label
-             BackgroundButtonClass button      = Info storage
-             */
-
-            BackgroundButtonClass button = Icons.Find(x => x.Icon == IconImage);
-
-            #region initialize Controls
-
-            ContextMenu IconContextMenu = new ContextMenu();
-
-            IconContextMenu.Items.Add("Resize (Large)");
-            MenuItem HideItem = new MenuItem() { Header = "Hide"};
-            HideItem.Click += ContextMenuHide;
-            IconContextMenu.Items.Add(HideItem);
-            IconContextMenu.Name = IconImage.Name + "ContextMenu";
-            this.RegisterName(IconImage.Name + "ContextMenu", IconContextMenu);
-
-            Button IconBackground = new Button()
-            {
-                Name = IconImage.Name + "Background",
-                Height = 150,
-                Width = button.Width,
-                BorderThickness = new Thickness(0),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                //Effect = new System.Windows.Media.Effects.BlurEffect() { Radius = 20, KernelType = System.Windows.Media.Effects.KernelType.Gaussian },
-                //This seems to only apply the blur to itself, excluding the background image
-                Background = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground.png"))),
-                BorderBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/MagnetBackground_Hover.png"))),
-
-                ContextMenu = IconContextMenu
-            };
-
-            IconImage.ContextMenu = IconContextMenu;
-
-            IconBackground.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
-            IconBackground.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
-            IconBackground.PreviewMouseMove += Icon_MouseMove;
-
-            this.RegisterName(IconImage.Name + "Background", IconBackground);
-
-            Panel.SetZIndex(IconBackground, -1);
-
-            //End of button background
-
-            //Starting button label
-
-            string LabelName = "";
-            foreach (LanguageClass.LabelContentClass ii in App.Lang.LabelContents)
-            {
-                if (IconImage.Name == ii.IconName)
-                    LabelName = ii.LabelText;
-            }
-
-            Label IconLabel = new Label()
-            {
-                Name = IconImage.Name + "Label",
-                BorderThickness = new Thickness(0),
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Content = LabelName,
-                FontSize = 12,
-                FontFamily = new FontFamily("Microsoft Yahei UI"),
-                FontWeight = FontWeights.Light,
-                Foreground = new SolidColorBrush(Colors.White),
-                HorizontalContentAlignment = HorizontalAlignment.Left
-            };
-
-            IconLabel.PreviewMouseLeftButtonDown += Icon_MouseLeftButtonDown;
-            IconLabel.PreviewMouseLeftButtonUp += Icon_MouseLeftButtonUp;
-            IconLabel.PreviewMouseMove += Icon_MouseMove;
-
-            this.RegisterName(IconImage.Name + "Label", IconLabel);
-
-            #endregion
-
-
-            button.BackgroundButton = IconBackground;
-            button.TextLabel = IconLabel;
-
-            if (button.Index == -1) button.Index = IconCount;
-
-            
-
-            IconImage.Margin = new Thickness(IconPointClass.IconPoints[button.Index].X, IconPointClass.IconPoints[button.Index].Y, 0, 0);
-            if (button.Width == 310)
-                IconImage.Margin = new Thickness(IconImage.Margin.Left + 64, IconImage.Margin.Top, 0, 0);
-            IconImage.UpdateLayout();
-
-            IconBackground.Margin = new Thickness(IconImage.Margin.Left - button.BackgroundOffset, IconImage.Margin.Top - 55, 0, 0);
-            IconLabel.Margin = new Thickness(IconImage.Margin.Left - button.LabelOffset, IconImage.Margin.Top + 50, 0, 0);
-
-            MainGrid.Children.Add(IconBackground);
-            MainGrid.Children.Add(IconLabel);
-
-            button.Location = new Point(IconImage.Margin.Left, IconImage.Margin.Top);
-
-            IconCount++;
-        }
-
         private void LoadMagnetConfig()
         {
+            // default
             if (String.IsNullOrWhiteSpace(App.Config.Magnets))
             {
                 foreach (Image i in ButtonsGrid.Children)
                 {
-                    Icons.Add(new BackgroundButtonClass() { Icon = i, Width = 150, BackgroundOffset = 55, LabelOffset = 35, Index = -1});
+                    Icons.Add(new BackgroundButtonClass(i, this, "small", -1));
                 }
-
                 return;
-
             }
 
             List<Image> toRemove = new List<Image>();
@@ -218,18 +108,7 @@ namespace EndlessLauncher
 
                 toRemove.Remove(icon);
 
-                int Width = 150;
-                int BackgroundOffset = 55;
-                int LabelOffset = 35;
-
-                if (int.Parse(data[1]) == 1)
-                {
-                    Width = 310;
-                    BackgroundOffset = 135;
-                    LabelOffset = 95;
-                }
-
-                Icons.Add(new BackgroundButtonClass() { Icon = icon, Width = Width, BackgroundOffset = BackgroundOffset, LabelOffset = LabelOffset, Index = int.Parse(data[2]) });
+                Icons.Add(new BackgroundButtonClass(icon, this, data[1], int.Parse(data[2])));
                 
             }
 
@@ -240,25 +119,7 @@ namespace EndlessLauncher
 
         }
 
-        private void ContextMenuHide(object sender, RoutedEventArgs e)
-        {
-            string name = ((ContextMenu)((MenuItem)sender).Parent).Name.Replace("ContextMenu", "");
-            
-            Image IconImage = (Image)this.FindName(name);
-            Button IconBackground = (Button)this.FindName(name + "Background");
-            Label IconLabel = (Label)this.FindName(name + "Label");
-
-            HideIcon(IconImage, IconBackground, IconLabel);
-        }
-
-        private void HideIcon(Image IconImage, Button IconBackground, Label IconLabel)
-        {
-            IconImage.Visibility = Visibility.Hidden;
-            IconBackground.Visibility = Visibility.Hidden;
-            IconLabel.Visibility = Visibility.Hidden;
-
-            IconPointClass.IconPoints.Add(new Point(IconImage.Margin.Left, IconImage.Margin.Top)); // adds point back to the list
-        }
+        
 
         #endregion
 
@@ -266,15 +127,9 @@ namespace EndlessLauncher
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            App.Config.Magnets = "StartGame,1,0;GameSettings,0,5;LauncherSettings,0,6";
+            App.Config.Magnets = "StartGame,medium,0;GameSettings,small,5;LauncherSettings,small,6";
 
             LoadMagnetConfig();
-
-            foreach (Image i in ButtonsGrid.Children)
-                LoadMagnetBackgrounds(i);
-
-            foreach (Image i in ButtonsGrid.Children)
-                IconPointClass.IconPoints.Remove(Icons.Find(x => x.Icon == i).Location);
 
         }
         
@@ -332,7 +187,7 @@ namespace EndlessLauncher
         private Thickness OriginalPos;              //Original position to calculate new position
 
 
-        private void Icon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public void Icon_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (DraggingEnabled)
             {
@@ -370,11 +225,11 @@ namespace EndlessLauncher
                 OriginalPos = DraggedObject.Margin;
 
                 //Adds the point back into the list so magnet can return
-                IconPointClass.IconPoints.Add(Icons.Find(x => x.BackgroundButton == DraggedBackground).Location);
+                IconPointClass.IconPoints[Icons.Find(x => x.BackgroundButton == DraggedBackground).Index].Used = false;
             }
         }
 
-        private void Icon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        public void Icon_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (DraggingEnabled)
             {
@@ -385,14 +240,13 @@ namespace EndlessLauncher
 
                 IsDragging = false;
 
-
                 DraggedObject.Margin = PointDistance.GetClosestPoint(DraggedObject.Margin, IconPointClass.IconPoints, OriginalPos, DraggedBackground, DraggedLabel);
 
                 int AddedBackgroundIndex = Icons.FindIndex(x => x.BackgroundButton == DraggedBackground);
                 Icons[AddedBackgroundIndex].Location = new Point(DraggedObject.Margin.Left, DraggedObject.Margin.Top);
 
                 //Removes the point since a magnet is already there
-                IconPointClass.IconPoints.Remove(Icons[AddedBackgroundIndex].Location);
+                IconPointClass.IconPoints[Icons[AddedBackgroundIndex].Index].Used = false; ;
 
                 //Ends dragging
                 DraggedObject = null;
@@ -419,14 +273,15 @@ namespace EndlessLauncher
             
         }
 
-        private void Icon_MouseMove(object sender, MouseEventArgs e)
+        public void Icon_MouseMove(object sender, MouseEventArgs e)
         {
             if (IsDragging && DraggedObject != null && DraggingEnabled)
             {
 
                 DraggedObject.Margin = new Thickness(e.GetPosition(this).X - 20, e.GetPosition(this).Y - 20, 0, 0);
-                DraggedBackground.Margin = new Thickness(e.GetPosition(this).X - 75, e.GetPosition(this).Y - 75, 0, 0);
-                DraggedLabel.Margin = new Thickness(e.GetPosition(this).X - 55, e.GetPosition(this).Y + 30, 0, 0);
+
+                DraggedBackground.Margin = new Thickness(e.GetPosition(this).X - 20 - Icons.Find(x => x.Icon == DraggedObject).BackgroundOffset, e.GetPosition(this).Y - 75, 0, 0);
+                DraggedLabel.Margin = new Thickness(e.GetPosition(this).X - 20 - Icons.Find(x => x.Icon == DraggedObject).LabelOffset, e.GetPosition(this).Y + 30, 0, 0);
             }
 
         }

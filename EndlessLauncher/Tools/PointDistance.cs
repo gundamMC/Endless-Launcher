@@ -8,9 +8,9 @@ namespace EndlessLauncher
 {
     class PointDistance
     {
-        public static Thickness GetClosestPoint(Thickness Origin, List<Point> PointsList, Thickness GoBack, Button Background, Label IconLabel)
+        public static Thickness GetClosestPoint(Thickness Origin, List<IconPointClass.IconPoint> PointsList, Thickness GoBack, Button Background, Label IconLabel)
         {
-            Point CloesestPoint = PointsList.OrderBy(x => Math.Pow(x.X - Origin.Left, 2) + Math.Pow(x.Y - Origin.Top, 2)).ToList().First();
+            Point CloesestPoint = PointsList.OrderBy(x => Math.Pow(x.Point.X - Origin.Left, 2) + Math.Pow(x.Points.Y - Origin.Top, 2)).ToList().First();
             //Square root removed to save performance
 
             if (Math.Pow(CloesestPoint.X - Origin.Left, 2) + Math.Pow(CloesestPoint.Y - Origin.Top, 2) < 200*200)
